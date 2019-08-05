@@ -1,3 +1,18 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+namespace :api do
+  namespace :v1 do
+    resources :users, only: %i[create]
+
+    ##user/auth##
+    get '/users', to: 'users#index'
+    post '/profile', to: 'users#profile'
+    post '/login', to: 'auth#create'
+
+
+  end
+end
+
+
+
 end
