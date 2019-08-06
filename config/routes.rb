@@ -8,6 +8,7 @@ namespace :api do
     get '/users', to: 'users#index'
     post '/profile', to: 'users#profile'
     post '/login', to: 'auth#create'
+    patch '/users/username', to: 'users#update_username'
 
 
   end

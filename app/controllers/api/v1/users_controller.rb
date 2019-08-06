@@ -19,10 +19,24 @@ class Api::V1::UsersController < ApplicationController
     render json: { user: UserSerializer.new(current_user)}, status: :accepted
   end
 
+  def update_username
+    @user = User.find_by(username: params[:oldUsername])
+    if @user.update(update_username_params)
+      render json: { user: UserSerializer.new(@user)}, status: :accepted
+    else
+      render json: {error: @user.errors.full_messages.first}
+    end
+
+  end
+
 private
 
   def user_params
     params.require(:user).permit(:username, :email, :password)
+  end
+
+  def update_username_params
+    params.require(:username).permit(:username)
   end
 
 
