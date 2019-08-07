@@ -20,18 +20,35 @@ class Api::V1::UsersController < ApplicationController
   end
 
   def update_username
-    @user = User.find_by(username: params[:oldUsername])
+    @user = User.find_by(username: params[:username])
     if @user.update(update_username_params)
       render json: { user: UserSerializer.new(@user)}, status: :accepted
     else
       render json: { error: @user.errors.full_messages.first }
     end
+  end
 
+  def update_email
+    @user = User.find_by(username: params[:username])
+    if @user.update(update_email_params)
+      render json: { user: UserSerializer.new(@user)}, status: :accepted
+    else
+      render json: { error: @user.errors.full_messages.first }
+    end
   end
 
   def update_first_name
     @user = User.find_by(username: params[:username])
     if @user.update(update_first_name_params)
+      render json: { user: UserSerializer.new(@user)}, status: :accepted
+    else
+      render json: { error: @user.errors.full_messages.first }
+    end
+  end
+
+  def update_last_name
+    @user = User.find_by(username: params[:username])
+    if @user.update(update_last_name_params)
       render json: { user: UserSerializer.new(@user)}, status: :accepted
     else
       render json: { error: @user.errors.full_messages.first }
@@ -44,14 +61,22 @@ private
     params.require(:user).permit(:username, :email, :password)
   end
 
+
   def update_username_params
-    params.require(:username).permit(:username)
+    params.require(:attribute).permit(:username)
   end
 
   def update_first_name_params
-    params.require(:firstName).permit(:first_name)
+    params.require(:attribute).permit(:first_name)
   end
 
+  def update_last_name_params
+    params.require(:attribute).permit(:last_name)
+  end
+
+  def update_email_params
+    params.require(:attribute).permit(:email)
+  end
 
 
 
