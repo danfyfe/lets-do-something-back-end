@@ -13,7 +13,7 @@ end
 private
 
 def events_params
-
+  
 end
 
 
