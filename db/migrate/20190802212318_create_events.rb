@@ -6,7 +6,8 @@ class CreateEvents < ActiveRecord::Migration[5.2]
       t.datetime :end
       t.text :description
       t.string :password_digest
-      
+      t.integer :owner_id
+
       t.timestamps
     end
   end
