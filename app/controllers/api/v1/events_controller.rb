@@ -2,10 +2,11 @@ class Api::V1::EventsController < ApplicationController
 
 def index
   byebug
+  
 end
 
 def create
-  byebug
+  # byebug
   @owner = User.find(params[:event][:owner_id])
   @event = Event.create(event_params)
   if @event.valid?
