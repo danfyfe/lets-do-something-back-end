@@ -1,8 +1,11 @@
 class Api::V1::EventsController < ApplicationController
 
-def index
-  byebug
-  
+def user_events
+  # byebug
+  @user = User.find(params[:id])
+  @events = @user.events
+  render json: @events
+
 end
 
 def create

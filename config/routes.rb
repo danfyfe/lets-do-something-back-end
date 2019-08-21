@@ -15,9 +15,12 @@ namespace :api do
     patch '/users/last_name', to: 'users#update_last_name'
     patch '/users/image', to: 'users#update_image'
 
+
     #events
     get '/events', to: 'events#index'
+    get '/users/:id/events', to: 'events#user_events'
     post '/events', to: 'events#create'
+
 
 
   end
