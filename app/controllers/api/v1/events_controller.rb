@@ -13,7 +13,7 @@ def create
   @event = Event.create(event_params)
   if @event.valid?
     UserEvent.create(user_id: @owner.id, event_id: @event.id)
-    render json: @event
+    render json: @event, include: [:users]
   else
     render json: { error: @event.errors.full_messages}
   end
