@@ -17,9 +17,11 @@ namespace :api do
 
 
     #events
+    get '/events/:id', to: 'events#show'
     get '/events', to: 'events#index'
     get '/users/:id/events', to: 'events#user_events'
     post '/events', to: 'events#create'
+
 
 
 

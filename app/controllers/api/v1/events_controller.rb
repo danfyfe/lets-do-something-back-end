@@ -1,5 +1,12 @@
 class Api::V1::EventsController < ApplicationController
 
+def show
+  # byebug
+  @event = Event.find(params[:id])
+  render json: @event, include: [:users]
+end
+
+
 def user_events
   # byebug
   @user = User.find(params[:id])
