@@ -4,8 +4,7 @@ def user_events
   # byebug
   @user = User.find(params[:id])
   @events = @user.events
-  render json: @events
-
+  render json: @events, include: [:users]
 end
 
 def create
