@@ -8,9 +8,9 @@ end
 
 
 def user_events
-  # byebug
   @user = User.find(params[:id])
   @events = @user.events
+  # byebug
   render json: @events, include: [:users]
 end
 
