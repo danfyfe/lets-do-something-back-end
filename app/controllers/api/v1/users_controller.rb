@@ -1,5 +1,10 @@
 class Api::V1::UsersController < ApplicationController
 
+  def index
+    # byebug
+    @users = User.all
+    render json: @users
+  end
 
   def create
     if params[:user][:password] === params[:user][:passwordConfirm]
@@ -54,6 +59,21 @@ class Api::V1::UsersController < ApplicationController
       render json: { error: @user.errors.full_messages.first }
     end
   end
+
+
+  def follow_request
+    @user = User.find(params[:id])
+    @requested_user = User.find_by(username:params[:request_username])
+    @follow_request = FollowRequest.create(follower_id: @user.id, user_id: @requested_user.id, accepted: false)
+
+    if @follow_request.valid?
+      render json: { status: :accepted }
+    else
+      render json: { error: @follow_request.errors.full_messages.first}
+    end
+  end
+
+
 
 private
 

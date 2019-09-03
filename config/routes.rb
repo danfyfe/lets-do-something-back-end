@@ -9,6 +9,8 @@ namespace :api do
     post '/profile', to: 'users#profile'
     post '/login', to: 'auth#create'
 
+    post '/followrequest/:id', to: 'users#follow_request'
+
     patch '/users/username', to: 'users#update_username'
     patch '/users/email', to: 'users#update_email'
     patch '/users/first_name', to: 'users#update_first_name'
