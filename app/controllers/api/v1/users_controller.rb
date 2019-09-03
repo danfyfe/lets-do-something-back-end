@@ -73,6 +73,23 @@ class Api::V1::UsersController < ApplicationController
     end
   end
 
+  def confirm_follow_request
+    @follow_request = FollowRequest.find(params[:id])
+    @user = User.find(@follow_request.user_id)
+    @follower = User.find(@follow_request.follower_id)
+    # byebug
+    if @follow_request.update(accepted: true)
+      @user.followers << @follower
+      @follower.followers << @user
+
+      @follow_request.destroy
+
+      render json: { status: :accepted }
+    else
+      render json: { error: @follow_request.errors.full_messages.first}
+    end
+  end
+
 
 
 private

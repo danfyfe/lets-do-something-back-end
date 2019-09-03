@@ -10,6 +10,7 @@ namespace :api do
     post '/login', to: 'auth#create'
 
     post '/followrequest/:id', to: 'users#follow_request'
+    patch '/confirmfollowrequest/:id', to: 'users#confirm_follow_request'
 
     patch '/users/username', to: 'users#update_username'
     patch '/users/email', to: 'users#update_email'
