@@ -32,19 +32,17 @@ ActiveRecord::Schema.define(version: 2019_08_28_214450) do
   end
 
   create_table "events", force: :cascade do |t|
+    t.integer "owner_id"
     t.string "title"
     t.datetime "start"
     t.datetime "end"
     t.text "description"
     t.string "password_digest"
-    t.integer "owner_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "follows", force: :cascade do |t|
-    t.integer "follower_id"
-    t.integer "followee_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -90,7 +88,6 @@ ActiveRecord::Schema.define(version: 2019_08_28_214450) do
     t.string "email"
     t.string "image"
     t.string "password_digest"
-    t.datetime "dob"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
