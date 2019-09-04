@@ -1,5 +1,24 @@
 class Api::V1::EventsController < ApplicationController
 
+def index
+  @user = User.find(params[:id])
+
+  def follower_events
+    @user.followers.map do |follower|
+      follower.events
+    end
+  end
+  @events = follower_events
+
+  @events << @user.events
+
+  @events = @events.flatten
+  
+  render json: @events, include: [:users]
+
+end
+
+
 def show
   # byebug
   @event = Event.find(params[:id])
