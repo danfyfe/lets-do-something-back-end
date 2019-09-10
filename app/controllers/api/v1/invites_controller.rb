@@ -28,13 +28,17 @@ class Api::V1::InvitesController < ApplicationController
     @rsvp = params[:invite][:rsvp]
 
     @invite.update(rsvp: @rsvp)
+    if @invite.rsvp
+      @user_event = UserEvent.create( event_id: @event.id, user_id: @user.id)
 
-    @user_event = UserEvent.create( event_id: @event.id, user_id: @user.id)
+      if @user_event.valid?
+        render json: { event: EventSerializer.new(@event), invite: InviteSerializer.new(@invite)}
+      else
+        render json: { error: @user_event.errors.full_messages.first}
+      end
 
-    if @user_event.valid?
-      render json: { event: EventSerializer.new(@event), invite: InviteSerializer.new(@invite)}
     else
-      render json: { error: @user_event.errors.full_messages.first}
+      render json: { status: 'Event declined', invite: InviteSerializer.new(@invite)}
     end
 
   end
