@@ -15,6 +15,8 @@ class User < ApplicationRecord
   has_many :followers, through: :following_users
 
   has_many :follow_requests
-  
+
+  has_many :invites
+
 
 end

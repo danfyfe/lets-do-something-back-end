@@ -26,6 +26,11 @@ namespace :api do
     get '/users/:id/events', to: 'events#user_events'
     post '/events', to: 'events#create'
 
+    #invite
+    get '/events/:id/invites', to: 'invites#index'
+    post '/events/:id/invites', to: 'invites#create'
+    patch '/events/:event_id/invites/:invite_id', to: 'invites#rsvp'
+
 
 
 

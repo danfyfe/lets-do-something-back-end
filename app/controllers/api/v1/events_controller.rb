@@ -13,7 +13,7 @@ def index
   @events << @user.events
 
   @events = @events.flatten
-  
+
   render json: @events, include: [:users]
 
 end
@@ -22,7 +22,9 @@ end
 def show
   # byebug
   @event = Event.find(params[:id])
-  render json: @event, include: [:users]
+  @users = @event.users
+  @invites = @event.invites
+  render json: @event, include: [:users, :invites]
 end
 
 

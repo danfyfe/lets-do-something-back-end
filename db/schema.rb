@@ -60,8 +60,6 @@ ActiveRecord::Schema.define(version: 2019_09_03_201508) do
   create_table "invites", force: :cascade do |t|
     t.integer "event_id"
     t.integer "user_id"
-    t.string "title"
-    t.text "description"
     t.boolean "rsvp"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

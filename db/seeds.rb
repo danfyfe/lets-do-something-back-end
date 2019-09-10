@@ -5,6 +5,13 @@ dan = User.create(username:'Dan Theman', password: '123', email:'fyfedaniel@gmai
 
 meylin = User.create(username:'Meylin', password:'123', email:'meylinlopez08@gmail.com', first_name: 'Meylin', last_name: 'Lopez', image:'https://i.imgur.com/cvortXR.jpg')
 
+bob = User.create(username:'Bob', password:'123', email:'bob@bob.com', first_name: 'Bob', last_name: 'Also Bob')
+
+# requests
+
+FollowRequest.create(user_id: dan.id, follower_id: meylin.id, accepted:false)
+FollowRequest.create(user_id: dan.id, follower_id: bob.id, accepted:false)
+
 ## events ##
 dan_birthday = Event.create(title:"Dan's Birthday", start:DateTime.new(2019,5,27,12,30), end:DateTime.new(2019,5,27,11,30), description:"Part for Dan's brithday! Bring stuff so he doesn't have to take care of all of you! Wooooooo! It will be fun! WOOO!", password:"123", owner_id: dan.id)
 
@@ -15,6 +22,12 @@ big_party = Event.create(title:'Big Party!!', start:DateTime.new(2019,6,2,12,30)
 
 UserEvent.create(user_id: meylin.id, event_id: big_party.id)
 
+# invites #
+
+Invite.create(user_id: dan.id, event_id: big_party.id)
+Invite.create(user_id: bob.id, event_id: big_party.id)
+
+Invite.create(user_id: bob.id, event_id: dan_birthday.id)
 
 
 

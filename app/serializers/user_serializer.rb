@@ -11,6 +11,8 @@ class UserSerializer < ActiveModel::Serializer
 
   has_many :followers, through: :following_users
 
+  has_many :invites
+
 
   # has_many :user_events
   # has_many :events, through: :user_events

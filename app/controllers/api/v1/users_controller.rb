@@ -81,10 +81,10 @@ class Api::V1::UsersController < ApplicationController
     if @follow_request.update(accepted: true)
       @user.followers << @follower
       @follower.followers << @user
-
+      @id = @follow_request.id
       @follow_request.destroy
 
-      render json: { status: :accepted }
+      render json: { id: @id }
     else
       render json: { error: @follow_request.errors.full_messages.first}
     end
