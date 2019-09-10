@@ -1,6 +1,6 @@
 class Api::V1::EventsController < ApplicationController
 
-def index
+def search
   @user = User.find(params[:id])
 
   def follower_events
@@ -8,11 +8,12 @@ def index
       follower.events
     end
   end
+
   @events = follower_events
 
   @events << @user.events
 
-  @events = @events.flatten
+  @events = @events.flatten.uniq
 
   render json: @events, include: [:users]
 
@@ -20,7 +21,6 @@ end
 
 
 def show
-  # byebug
   @event = Event.find(params[:id])
   @users = @event.users
   @invites = @event.invites
@@ -31,12 +31,10 @@ end
 def user_events
   @user = User.find(params[:id])
   @events = @user.events
-  # byebug
   render json: @events, include: [:users]
 end
 
 def create
-  # byebug
   @owner = User.find(params[:event][:owner_id])
   @event = Event.create(event_params)
   if @event.valid?
