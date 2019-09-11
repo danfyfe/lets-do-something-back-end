@@ -11,8 +11,13 @@ def create
   end
 end
 
-def delete
+def destroy
+  @cost = Cost.find_by(delete_params)
+  @cost_id = @cost.id
 
+  @cost.destroy
+
+  render json: { costId: @cost_id }
 end
 
 
@@ -22,6 +27,9 @@ def costs_params
   params.require(:cost).permit(:name,:price, :budget_id, :user_id)
 end
 
+def delete_params
+  params.require(:cost).permit(:id)
+end
 
 
 

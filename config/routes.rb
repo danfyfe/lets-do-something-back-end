@@ -33,6 +33,7 @@ namespace :api do
 
     #costs
     post '/users/:user_id/budgets/:budget_id/costs', to: 'costs#create'
+    delete '/costs', to: 'costs#destroy'
 
 
 
