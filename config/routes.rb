@@ -31,6 +31,9 @@ namespace :api do
     post '/events/:id/invites', to: 'invites#create'
     patch '/events/:event_id/invites/:invite_id', to: 'invites#rsvp'
 
+    #costs
+    post '/users/:user_id/budgets/:budget_id/costs', to: 'costs#create'
+
 
 
 
