@@ -24,7 +24,7 @@ UserEvent.create(user_id: dan.id, event_id: dan_birthday.id)
 
 big_party = Event.create(title:'Big Party!!', start:DateTime.new(2019,6,2,12,30), end:DateTime.new(2019,6,2,22,30), description:'Big ol party! Getting together to have fun. Blah, blah, blah, blah', password:'123', owner_id:  meylin.id)
 
-Budget.create(event_id: big_party)
+Budget.create(event_id: big_party.id)
 
 UserEvent.create(user_id: meylin.id, event_id: big_party.id)
 
