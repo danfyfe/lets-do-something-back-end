@@ -24,7 +24,7 @@ def show
   @event = Event.find(params[:id])
   @users = @event.users
   @invites = @event.invites
-  render json: @event, include: [:users, :invites]
+  render json: { event: EventSerializer.new(@event) }
 end
 
 
@@ -37,6 +37,7 @@ end
 def create
   @owner = User.find(params[:event][:owner_id])
   @event = Event.create(event_params)
+  @budget = Budget.create(event_id: @event.id)
   if @event.valid?
     UserEvent.create(user_id: @owner.id, event_id: @event.id)
     render json: @event, include: [:users]

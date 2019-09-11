@@ -16,7 +16,7 @@ class Api::V1::InvitesController < ApplicationController
     @invites.map do |invite|
       @users << invite.user
     end
-
+    # this is all invited users, even if not invited through this current action
     render json: @users
   end
 

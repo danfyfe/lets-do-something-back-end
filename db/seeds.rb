@@ -15,10 +15,16 @@ FollowRequest.create(user_id: dan.id, follower_id: bob.id, accepted:false)
 ## events ##
 dan_birthday = Event.create(title:"Dan's Birthday", start:DateTime.new(2019,5,27,12,30), end:DateTime.new(2019,5,27,11,30), description:"Part for Dan's brithday! Bring stuff so he doesn't have to take care of all of you! Wooooooo! It will be fun! WOOO!", password:"123", owner_id: dan.id)
 
+db_budget = Budget.create(event_id: dan_birthday.id)
+
+cake = Cost.create(budget_id: db_budget.id, user_id: dan.id, name:'Cake', description: 'birthday cake', price:25)
+
 UserEvent.create(user_id: dan.id, event_id: dan_birthday.id)
 
 
 big_party = Event.create(title:'Big Party!!', start:DateTime.new(2019,6,2,12,30), end:DateTime.new(2019,6,2,22,30), description:'Big ol party! Getting together to have fun. Blah, blah, blah, blah', password:'123', owner_id:  meylin.id)
+
+Budget.create(event_id: big_party)
 
 UserEvent.create(user_id: meylin.id, event_id: big_party.id)
 

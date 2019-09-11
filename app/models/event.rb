@@ -4,5 +4,9 @@ class Event < ApplicationRecord
   has_many :users, through: :user_events
   has_many :invites
 
+  has_one :budget
+
+  has_many :costs, through: :budget
+
   validates :title, presence: true, uniqueness: true
 end
