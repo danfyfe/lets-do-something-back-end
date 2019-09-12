@@ -2,7 +2,7 @@ class Api::V1::CostsController < ApplicationController
 
 
 def create
-  @cost = Cost.find_or_create_by(costs_params)
+  @cost = Cost.create(costs_params)
 
   if @cost.valid?
     render json: { cost: CostSerializer.new(@cost) }
