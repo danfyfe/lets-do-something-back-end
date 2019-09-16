@@ -5,6 +5,7 @@ class User < ApplicationRecord
   has_many :user_events
   has_many :events, through: :user_events
   has_many :messages
+  has_many :replies
 
   has_many :followed_users, foreign_key: :follower_id, class_name: 'Follow'
 
@@ -17,7 +18,6 @@ class User < ApplicationRecord
   has_many :follow_requests
 
   has_many :invites
-
 
 
 end

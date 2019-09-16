@@ -36,7 +36,9 @@ Invite.create(user_id: bob.id, event_id: dan_birthday.id)
 
 # messages #
 
-Message.create(user_id: dan.id, event_id: dan_birthday.id, title:'Whatever!', content:'Placeholder message! WAAAA')
+message1 = Message.create(user_id: dan.id, event_id: dan_birthday.id, title:'Whatever!', content:'Placeholder message! WAAAA')
 
+# replies #
+Reply.create(user_id: meylin.id, message_id: message1.id, content: 'BLHASDFKKLSDFJ!')
 
 puts 'done seeding'
