@@ -8,7 +8,6 @@ meylin = User.create(username:'Meylin', password:'123', email:'meylinlopez08@gma
 bob = User.create(username:'Bob', password:'123', email:'bob@bob.com', first_name: 'Bob', last_name: 'Also Bob')
 
 # requests
-
 FollowRequest.create(user_id: dan.id, follower_id: meylin.id, accepted:false)
 FollowRequest.create(user_id: dan.id, follower_id: bob.id, accepted:false)
 
@@ -35,7 +34,9 @@ Invite.create(user_id: bob.id, event_id: big_party.id)
 
 Invite.create(user_id: bob.id, event_id: dan_birthday.id)
 
+# messages #
 
+Message.create(user_id: dan.id, event_id: dan_birthday.id, title:'Whatever!', content:'Placeholder message! WAAAA')
 
 
 puts 'done seeding'
