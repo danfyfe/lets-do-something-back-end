@@ -35,6 +35,9 @@ namespace :api do
     post '/users/:user_id/budgets/:budget_id/costs', to: 'costs#create'
     delete '/costs', to: 'costs#destroy'
 
+    # messages
+    get '/users/:user_id/messages', to: 'messages#index'
+
 
 
 
