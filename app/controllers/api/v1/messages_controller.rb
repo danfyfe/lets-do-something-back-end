@@ -9,7 +9,12 @@ class Api::V1::MessagesController < ApplicationController
   end
 
   def create
-
+    @message = Message.create(messages_params)
+    if @message.valid?
+      render json: @message, include: [:replies]
+    else
+      render json: { error: @message.errors.full_messages}
+    end
   end
 
 
@@ -21,7 +26,7 @@ class Api::V1::MessagesController < ApplicationController
   private
 
   def messages_params
-
+    params.require(:message).permit(:user_id, :event_id, :title, :content)
   end
 
 end
