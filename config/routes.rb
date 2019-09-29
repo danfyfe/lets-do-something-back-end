@@ -38,6 +38,7 @@ namespace :api do
     # messages
     get '/users/:user_id/messages', to: 'messages#index'
     post '/messages', to: 'messages#create'
+    
     # reply
     post '/replies', to: 'replies#create'
 

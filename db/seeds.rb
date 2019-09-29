@@ -1,11 +1,15 @@
 puts 'seeding'
 
 # users ##
-dan = User.create(username:'Dan Theman', password: '123', email:'fyfedaniel@gmail.com', first_name: 'Dan', last_name: 'Fyfe', image:'https://i.imgur.com/KmHDi3Q.jpg'  )
+dan = User.create(username:'Dan Theman', password: '123', email:'fyfedaniel@gmail.com', first_name: 'Dan', last_name: 'Fyfe', image:'https://i.imgur.com/KmHDi3Q.jpg')
 
 meylin = User.create(username:'Meylin', password:'123', email:'meylinlopez08@gmail.com', first_name: 'Meylin', last_name: 'Lopez', image:'https://i.imgur.com/cvortXR.jpg')
 
 bob = User.create(username:'Bob', password:'123', email:'bob@bob.com', first_name: 'Bob', last_name: 'Also Bob')
+
+kevin = User.create(username:'Kevin', password:'123', email:'kevin@kevin.com', first_name: 'Kevin', last_name: 'Also Kevin')
+john = User.create(username:'John', password:'123', email:'john@john.com', first_name: 'John', last_name: 'Also John')
+jane = User.create(username:'jane', password:'123', email:'jane@jane.com', first_name: 'Jane', last_name: 'Also Jane')
 
 # requests
 FollowRequest.create(user_id: dan.id, follower_id: meylin.id, accepted:false)
