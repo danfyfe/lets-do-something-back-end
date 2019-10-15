@@ -9,7 +9,7 @@ bob = User.create(username:'Bob', password:'123', email:'bob@bob.com', first_nam
 
 kevin = User.create(username:'Kevin', password:'123', email:'kevin@kevin.com', first_name: 'Kevin', last_name: 'Also Kevin')
 john = User.create(username:'John', password:'123', email:'john@john.com', first_name: 'John', last_name: 'Also John')
-jane = User.create(username:'jane', password:'123', email:'jane@jane.com', first_name: 'Jane', last_name: 'Also Jane')
+jane = User.create(username:'Jane', password:'123', email:'jane@jane.com', first_name: 'Jane', last_name: 'Also Jane')
 
 # requests
 FollowRequest.create(user_id: dan.id, follower_id: meylin.id, accepted:false)
