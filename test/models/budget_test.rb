@@ -2,10 +2,7 @@ require 'test_helper'
 require 'faker'
 
 class BudgetTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
-
+  
   test "does not creates a budget without an event" do
     budget = Budget.new()
     assert_not budget.save, 'Budget saved without event'
